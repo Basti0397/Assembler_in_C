@@ -27,9 +27,14 @@ int main(void)
 	int r0=0,x=12;
 	
 	__ASM{
-		mov x,#5
-		//add r0, x,#5	
+		mov x,5
+		add r0, x,5	
 	}
+	
+	sprintf(resStr, "%d", r0);
+	TFT_puts(resStr);
+	
+	
   return 0;
 
 }

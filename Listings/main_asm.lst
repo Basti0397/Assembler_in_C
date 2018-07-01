@@ -70,8 +70,10 @@ ARM Macro Assembler    Page 2
 
 
                                                              r3 schreiben
-   16 00000008 FB02 F003       mul              r0, r2, r3
-   17 0000000C 4770            bx               lr
+   16 00000008 FB02 F003       mul              r0, r2, r3  ;Ergebnis ausrechne
+                                                            n: VarA*VarB
+   17 0000000C 4770            bx               lr          ;Rückgabe des Regis
+                                                            ters r0
    18 0000000E 00 00           ALIGN            4
    19 00000010                 END
               00000000 
