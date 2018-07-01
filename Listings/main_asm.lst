@@ -1,0 +1,148 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; Data section, aligned on 4-byte boundery
+    2 00000000                 AREA             MyData, DATA, align = 2
+    3 00000000 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00       VarA    SPACE            40
+    4 00000028 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00       VarB    SPACE            40
+    5 00000050 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00       Res     SPACE            40
+    6 00000078                 EXPORT           Multiply    ;Funktion als exter
+                                                            n markieren
+    7 00000078                 EXPORT           VarA        ;Globale Variablen 
+                                                            deklarieren
+    8 00000078                 EXPORT           VarB
+    9 00000078         ; Code section, aligned on 4-byte boundery
+   10 00000078                 AREA             |.text|, CODE, readonly, align 
+= 2
+   11 00000000         Multiply
+   12 00000000 4A03            ldr              r2,=VarA    ;Adresse von VarA i
+                                                            n r2 schreiben
+   13 00000002 4B04            ldr              r3,=VarB
+   14 00000004 6812            ldr              r2,[r2]     ;Inhalt von VarA in
+                                                             r2 schreiben
+   15 00000006 681B            ldr              r3,[r3]     ;Inhalt von VarB in
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                                                             r3 schreiben
+   16 00000008 FB02 F003       mul              r0, r2, r3
+   17 0000000C 4770            bx               lr
+   18 0000000E 00 00           ALIGN            4
+   19 00000010                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\main_asm.d -o.\objects\main_asm.o -IC:\Keil_v5\ARM\RV31\
+INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\Inc\ST\STM32F10x --predefin
+e="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 523" --list=.\listings\ma
+in_asm.lst main_asm.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyData 00000000
+
+Symbol: MyData
+   Definitions
+      At line 2 in file main_asm.s
+   Uses
+      None
+Comment: MyData unused
+Res 00000050
+
+Symbol: Res
+   Definitions
+      At line 5 in file main_asm.s
+   Uses
+      None
+Comment: Res unused
+VarA 00000000
+
+Symbol: VarA
+   Definitions
+      At line 3 in file main_asm.s
+   Uses
+      At line 7 in file main_asm.s
+      At line 12 in file main_asm.s
+
+VarB 00000028
+
+Symbol: VarB
+   Definitions
+      At line 4 in file main_asm.s
+   Uses
+      At line 8 in file main_asm.s
+      At line 13 in file main_asm.s
+
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 10 in file main_asm.s
+   Uses
+      None
+Comment: .text unused
+Multiply 00000000
+
+Symbol: Multiply
+   Definitions
+      At line 11 in file main_asm.s
+   Uses
+      At line 6 in file main_asm.s
+Comment: Multiply used once
+2 symbols
+340 symbols in table
