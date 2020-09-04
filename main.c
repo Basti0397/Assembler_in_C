@@ -20,6 +20,8 @@ int main(void)
 	char resStr[20];
 	sprintf(resStr, "%d", res);
 	
+
+	hasldflasdof
 	TFT_puts(resStr);
 	
 	
